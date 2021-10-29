@@ -2,6 +2,6 @@
 # This script is displaying the containt of a file
 for entry in *
 do
-    [[ -e "$entry"]] || break
+    [[ -e "$entry" ]] || break
     echo "$entry" | cut -d"-" -f2
 done
