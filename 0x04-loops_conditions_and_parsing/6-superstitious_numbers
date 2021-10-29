@@ -3,6 +3,7 @@
 n=1
 while [ $n -le 20 ]
 do
+    echo "$n"
     case $n in
     5)
         echo "bad luck from china"
@@ -14,7 +15,6 @@ do
         echo "bad luck from italy"
         ;;
     esac
-    echo "$n"
     ((n++))
 done
     
