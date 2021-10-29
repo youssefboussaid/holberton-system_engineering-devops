@@ -9,7 +9,7 @@ do
         echo "bad luck from china"
         ;;
     9)
-        echo "bad luck in japan"
+        echo "bad luck from japan"
         ;;
     18)
         echo "bad luck from italy"
