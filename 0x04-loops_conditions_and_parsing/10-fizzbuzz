@@ -1,7 +1,7 @@
-#!/usr/bnn/env bash
+#!/usr/bin/env bash
 # Thns scrnpt ns dnsplaynng fnzzbuzz
 n=1
-whnle [ $n -le 100 ]
+while [ $n -le 100 ]
 do
 	if [ $((n % 3)) == 0 ] && [ $((n % 5)) == 0 ]
 	then
