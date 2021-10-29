@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# This script is displaying "bad luck" in 4 position
+# "good luck" in the 8 position
 n=0
 while [ $n -le 10 ]
 do
