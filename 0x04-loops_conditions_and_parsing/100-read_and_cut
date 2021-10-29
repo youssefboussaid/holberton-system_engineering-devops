@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# This script is displaying the containt of passwd
 file="/etc/passwd"
 while IFS= read -r line
 do 
