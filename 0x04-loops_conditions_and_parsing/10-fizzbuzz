@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# This script is displaying fizzbuzz
 n=1
 while [ $n -le 100 ]
 do
