@@ -1,31 +1,39 @@
 #!/usr/bin/python3
 """
- using this REST API, for a given employee ID,
- returns information about his/her TODO list progress.
+Uses https://jsonplaceholder.typicode.com along with an employee ID to
+return information about the employee's todo list progress
 """
 import requests
 import sys
 
-if __name__ == '__main__':
-    employee_id = sys.argv[1]
-    url_todo = 'https://jsonplaceholder.typicode.com/todos/'
-    url_user = 'https://jsonplaceholder.typicode.com/users/'
-    todo = requests.get(url_todo, params={'user_id': employee_id})
-    user = requests.get(url_user, params={'id': employee_id})
 
-    todo_dict_list = todo.json()
-    user_dict_list = user.json()
+def fetch_api():
+    """ extract data from api """
+    user_i = int(sys.argv[1])
+    url_info = "https://jsonplaceholder.typicode.com/users/{}/".format(
+        user_i)
+    response = requests.get(url_info).json()
+    user_name = response.get("name")
+    url_todo = "https://jsonplaceholder.typicode.com/users/{}/todos".format(
+        user_i)
+    todos = requests.get(url_todo).json()
+    number_completed_todos = 0
+    number_of_todos = 0
+    # completed_todos = []
+    task_list = ""
+    for todo in todos:
+        number_of_todos += 1
+        if todo.get("completed") is True:
+            number_completed_todos += 1
+            # completed_todos.append(todo["title"])
+            task_list += "\t " + todo.get("title") + "\n"
 
-    done_tasks = []
-    total_tasks = len(todo_dict_list)
-    employee = user_dict_list[0].get('name')
+    print("Employee {} is done with tasks({}/{}):".format(
+        user_name,
+        number_completed_todos,
+        number_of_todos
+        ))
+    print(task_list[:-1])
 
-    for task in todo_dict_list:
-        if task.get('completed') is True:
-            done_tasks.append(task)
-
-    print("Employee {} is done with tasks({}/{}):"
-          .format(employee, len(done_tasks), total_tasks))
-
-    for task in done_tasks:
-        print("\t {}".format(task.get('title')))
+if __name__ == "__main__":
+    fetch_api()
