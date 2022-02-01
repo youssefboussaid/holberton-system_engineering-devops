@@ -32,8 +32,9 @@ def fetch_api():
         user_name,
         number_completed_todos,
         number_of_todos
-        ))
+    ))
     print(task_list[:-1])
+
 
 if __name__ == "__main__":
     fetch_api()
